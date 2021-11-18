@@ -18,10 +18,19 @@
     
     const nomes = document.querySelectorAll('p')
     const nome = document.querySelector('p')
+    const nomeDaMaria = document.querySelector('#name2')
+    // const nomeDaMaria = document.getElementById('name2')
+    // const nomeDaMaria = document.getElementsByClassName('teste')
     const titulo = document.querySelector('h1')
+    // const titulo = document.getElementsByTagName('h1')
+    // const materiaSpan = document.querySelector('h1 > span')
+    // const materiaSpan = titulo.querySelector('span')
+    // const materiaSpan = titulo.querySelector('.materia')
+    const materiaSpan = titulo.querySelector('span[data-materia]')
 
-    titulo.innerText = materia
+    materiaSpan.innerText = materia
     
+    console.log(nomeDaMaria)
     console.log(titulo)
     console.log(nome)
     console.log(nomes)
@@ -30,8 +39,10 @@
 </head>
 
 <body>
-  <h1>Aprendendo CSS no Browser</h1>
-  <p id="name2">Maria da Silva</p>
+  <span>Teste</span>
+  <!-- <h1>Aprendendo <span class="materia">CSS</span> no Browser</h1> -->
+  <h1>Aprendendo <span data-materia>CSS</span> no Browser</h1>
+  <p id="name2" class="teste">Maria da Silva</p>
   <p id="name">Zé da Silva</p>
 </body>
 </html>
