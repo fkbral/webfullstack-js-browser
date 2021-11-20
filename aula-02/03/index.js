@@ -44,7 +44,19 @@ newSkillForm.onsubmit = function(event) {
 
 function renderSkillLi(skill) {
   const li = document.createElement('li')
-  li.innerText = skill
+  const textSpan = document.createElement('span')
+  textSpan.innerText = skill
+
+  const removeButton = document.createElement('button')
+  removeButton.innerText = 'remover'
+
+  removeButton.onclick = function() {
+    skillsUL.removeChild(li)
+    deleteSkill(skill)
+  }
+
+  li.append(textSpan)
+  li.append(removeButton)
 
   skillsUL.append(li)
 }
@@ -53,4 +65,9 @@ function saveSkill(skill) {
   skills.push(skill)
   localStorage.setItem('skills', JSON.stringify(skills))
   newSkillInput.value = ""
+}
+
+function deleteSkill(skillToDelete) {
+  skills = skills.filter(skill => skill !== skillToDelete)
+  localStorage.setItem('skills', JSON.stringify(skills))
 }
