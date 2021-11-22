@@ -1,0 +1,16 @@
+body {
+  background-color: #333;
+  color: #fff;
+}
+
+li span {
+  margin-right: 12px;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+li::first-letter {
+  text-transform: capitalize;
+}
