@@ -4,7 +4,17 @@ body {
 }
 
 li span {
-  margin-right: 12px;
+  display: inline-block;
+  min-width: 80px;
+}
+
+li span,
+li button {
+  margin-right: 6px;
+}
+
+li + li {
+  margin-top: 10px;
 }
 
 .done {
