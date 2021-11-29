@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula de JS de navegador</title>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <script src="index.js" type="module"></script>
+  </head>
+
+  <body>
+    <template data-favorites-list-template>
+      <section>
+        <h2>Lista nova</h2>
+        <ul></ul>
+      </section>
+    </template>
+
+    <template data-favorites-list-item-template>
+      <li data-favorite-list-container>
+        <span>elemento placeholder</span>
+        <button data-remove-button>remover</button>
+        <button data-complete-button>completar</button>
+      </li>
+    </template>
+
+    <h2>Adicionar nova habilidade</h2>
+
+    <form data-new-favorites-list-form>
+      <label for="new-list-name"> nova lista: </label>
+      <input id="new-list-name" type="text" />
+
+      <button type="submit">criar lista</button>
+    </form>
+
+    <form data-new-favorites-list-item-form>
+      <label for="skill"> nova elemento: </label>
+      <input id="skill" type="text" />
+      <select data-favorites-lists-select>
+        <option disabled value="" selected>Selecione uma lista</option>
+        <!-- <option value="Lista de compras">Lista de compras</option>
+        <option value="Lista de favoritos">Lista de favoritos</option> -->
+      </select>
+
+      <button type="submit">adicionar elemento à lista</button>
+    </form>
+
+    <div data-favorites-lists-container></div>
+  </body>
+</html>
