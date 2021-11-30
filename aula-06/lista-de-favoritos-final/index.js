@@ -8,29 +8,42 @@ const favoritesListsSelect = document.querySelector('[data-favorites-lists-selec
 
 let favoriteLists = []
 
-export const localStorageFavoritesListsKey = 'favorites-lists'
 export const localStorageFavoritesListPreffixKey = 'favorites-list'
 export const localStorageFavoritesListsIdsKey = 'favorites-lists-ids'
 
 loadListsFromLocalStorage()
 
+function addListOption(favoriteList) {
+  // criar um elemento option no meu código JS
+  const option = document.createElement('option')
+  // atribuir ao valor da opção o nome da lista carregada
+  option.value = favoriteList.id
+  // atribuir ao texto interior da opção o nome da lista carregada
+  option.innerText = favoriteList.name
+  // incluir elemento option dentro do select existente
+  favoritesListsSelect.appendChild(option)
+}
+
 function loadListsFromLocalStorage() {
-  const localStorageLists = JSON.parse(
-    localStorage.getItem(localStorageFavoritesListsKey)
+  const localStorageListsIds = JSON.parse(
+    localStorage.getItem(localStorageFavoritesListsIdsKey)
   ) ?? []
+
+  const localStorageLists = localStorageListsIds.map(favoriteListId => {
+    const favoriteList = JSON.parse(
+      localStorage.getItem(
+        `${localStorageFavoritesListPreffixKey}-${favoriteListId}`
+      )
+    )
+
+    return favoriteList
+  })
 
   localStorageLists.forEach(localStorageList => {
     console.log(localStorageList)
     favoriteLists.push(new FavoritesList(localStorageList.name, localStorageList.items ?? []))
+    addListOption(localStorageList)
   })
-
-  // favoritesListsSelect
-
-  // criar um elemento option no meu código JS
-  // atribuir ao valor da opção o nome da lista carregada
-  // atribuir ao texto interior da opção o nome da lista carregada
-  // incluir elemento option dentro do select existente
-
 }
 
 newSkillForm.onsubmit = function(event) {
@@ -100,9 +113,15 @@ newFavoritesListForm.onsubmit = function(event) {
   localStorage.setItem(localStorageFavoritesListsIdsKey, JSON.stringify(favoriteListIds))
 
   localStorage.setItem(
-    `${localStorageFavoritesListPreffixKey}-${newListName}`, JSON.stringify(favoriteListData)
+    `${localStorageFavoritesListPreffixKey}-${favoriteListData.id}`, JSON.stringify(favoriteListData)
   )
 
   newFavoritesListNameInput.value = ''
+
+  
+  addListOption(favoriteListData)
+
+  const favoriteList = new FavoritesList(favoriteListData.name, favoriteListData.items)
+  favoriteLists.push(favoriteList)
 }
 

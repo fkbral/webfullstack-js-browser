@@ -14,7 +14,15 @@
   <body>
     <template data-favorites-list-template>
       <section>
-        <h2>Lista nova</h2>
+        <header>
+          <h2>Lista nova</h2>
+          <button
+            data-favorites-list-delete-list
+            data-favorite-list-id="id da lista"
+          >
+            deletar lista
+          </button>
+        </header>
         <ul></ul>
       </section>
     </template>
@@ -27,7 +35,7 @@
       </li>
     </template>
 
-    <h2>Adicionar nova habilidade</h2>
+    <h2>Minhas listas de favoritos</h2>
 
     <form data-new-favorites-list-form>
       <label for="new-list-name"> nova lista: </label>
@@ -37,12 +45,10 @@
     </form>
 
     <form data-new-favorites-list-item-form>
-      <label for="skill"> nova elemento: </label>
+      <label for="skill"> novo item: </label>
       <input id="skill" type="text" />
       <select data-favorites-lists-select>
-        <option disabled value="" selected>Selecione uma lista</option>
-        <!-- <option value="Lista de compras">Lista de compras</option>
-        <option value="Lista de favoritos">Lista de favoritos</option> -->
+        <option disabled selected>Selecione uma lista</option>
       </select>
 
       <button type="submit">adicionar elemento à lista</button>

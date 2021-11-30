@@ -3,6 +3,10 @@ body {
   color: #fff;
 }
 
+button {
+  cursor: pointer;
+}
+
 li span {
   display: inline-block;
   min-width: 80px;
@@ -32,6 +36,25 @@ form + form {
 [data-favorites-lists-container] {
   display: flex;
   gap: 48px;
+  flex-flow: row wrap;
+}
+
+[data-favorites-lists-container] section header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+[data-favorites-list-delete-list]  {
+  opacity: 0;
+  pointer-events: none;
+
+  /* transition: .2s ease-in-out; */
+}
+
+[data-favorites-lists-container] section header:hover [data-favorites-list-delete-list] {
+  opacity: 1;
+  pointer-events: all;
 }
 
 li span::first-letter {

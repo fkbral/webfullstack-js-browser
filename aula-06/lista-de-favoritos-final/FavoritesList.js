@@ -1,11 +1,14 @@
-import { localStorageFavoritesListPreffixKey, localStorageFavoritesListsKey } from "./index.js"
+import { localStorageFavoritesListPreffixKey, localStorageFavoritesListsIdsKey } from "./index.js"
 
 export class FavoritesList {
   #items
   #view
+  #localStorageId
 
   constructor(name, storedElements) {
     this.name = name
+    this.id = name
+    this.#localStorageId = `${localStorageFavoritesListPreffixKey}-${this.name}`
     this.#items = storedElements ?? []
     this.#view = this.#generateView()
     this.#renderItems(storedElements)
@@ -16,6 +19,26 @@ export class FavoritesList {
     const viewTemplate = document.querySelector('[data-favorites-list-template]')
     listsContainer.appendChild(viewTemplate.content.cloneNode(true))
     const section = listsContainer.querySelector('section:last-child')
+
+    const deleteListButton = section.querySelector('[data-favorites-list-delete-list]')
+    deleteListButton.dataset.favoriteListId = this.id
+
+    deleteListButton.onclick = (event) => {
+      listsContainer.removeChild(section)
+      localStorage.removeItem(this.#localStorageId)
+
+      const localStorageIds = JSON.parse(localStorage.getItem(
+        localStorageFavoritesListsIdsKey
+      ))
+
+      const updatedFavoriteListsIds = localStorageIds.filter(
+        listId => listId !== this.id
+      )
+
+      localStorage.setItem(
+        localStorageFavoritesListsIdsKey, JSON.stringify(updatedFavoriteListsIds)
+      )
+    }
 
     const h2 = section.querySelector('h2')
     h2.innerText = this.name
@@ -72,12 +95,14 @@ export class FavoritesList {
     items.forEach(item => this.#renderItem(item))
   }
 
-  #updateLocalStorageList(updatedListItems) {
-    const localStorageFavoriteListId = `
-      ${`${localStorageFavoritesListPreffixKey}-${this.name}`}
-    `
+  #updateLocalStorageList() {
+    const favoriteListData = {
+      id: this.id,
+      name: this.name,
+      items: this.#items
+    }
 
-    localStorage.setItem(localStorageFavoriteListId, JSON.stringify(this.#items))
+    localStorage.setItem(this.#localStorageId, JSON.stringify(favoriteListData))
   }
 
   #saveItem(item) {
