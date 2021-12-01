@@ -1,0 +1,63 @@
+:root {
+  --tictactoe-size: 5px;
+  --tictactoe-border-color: white;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #333;
+  color: #fff;
+}
+
+button {
+  cursor: pointer;
+}
+
+[data-tictactoe-container] {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+
+  display: flex;
+  
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+[data-tictactoe-container] section {
+  height: 50px;
+  width: 100%;
+  
+  display: flex;
+}
+
+[data-tictactoe-container] section + section {
+  border-top: var(--tictactoe-size) var(--tictactoe-border-color) solid;
+}
+
+[data-tictactoe-container] section > button {
+  font-size: 2.8rem;
+  display: flex;
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  /* width: 33.33%; */
+}
+
+[data-tictactoe-container] section > button + button {
+  border-left: var(--tictactoe-size) var(--tictactoe-border-color) solid;
+}
+
+[data-tictactoe-cell] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-tictactoe-cell="X"] {
+  color: slateblue;
+}
+
+[data-tictactoe-cell="O"] {
+  color: greenyellow;
+}
