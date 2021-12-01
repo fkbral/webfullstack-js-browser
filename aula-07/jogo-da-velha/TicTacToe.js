@@ -6,12 +6,16 @@ export class TicTacToe {
     this.nextPlayValue = "O"
     this.gameOver = false
     this.#view = document.querySelector('[data-tictactoe-container]')
+    this.#setButtonEventListeners()
   }
 
-  addNextPlayValue() {
+  #setButtonEventListeners() {
     console.log(this.#view)
     // procurando botão com data-tictactoe-cell dentro do container
     const cellButtons = this.#view.querySelectorAll('')
+    cellButtons.onclick = function(event) {
+      
+    }
   }
 }
 
