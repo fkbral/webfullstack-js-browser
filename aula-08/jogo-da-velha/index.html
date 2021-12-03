@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="index.js" type="module"></script>
+  </head>
+  <body>
+    <h1>Jogo da Velha</h1>
+
+    <div data-tictactoe-container>
+      <!-- section*3>span*3 -->
+      <section>
+        <button data-tictactoe-cell></button>
+        <button data-tictactoe-cell></button>
+        <button data-tictactoe-cell></button>
+      </section>
+      <section>
+        <button data-tictactoe-cell></button>
+        <button data-tictactoe-cell></button>
+        <button data-tictactoe-cell></button>
+      </section>
+      <section>
+        <button data-tictactoe-cell></button>
+        <button data-tictactoe-cell></button>
+        <button data-tictactoe-cell></button>
+      </section>
+
+      <button data-tictactoe-reset>Resetar Jogo</button>
+    </div>
+
+    <footer>
+      <p>O: <span data-O-victories>n</span> vitórias</p>
+      <p>X: <span data-X-victories>n</span> vitórias</p>
+    </footer>
+  </body>
+</html>
