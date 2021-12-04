@@ -1,12 +1,31 @@
 export class TicTacToeBoard {
   #view
+  #playersVictories
+  #localStorageWinsKey = 'tictactoe-score'
 
   constructor() {
     this.cells = []
     this.nextPlayValue = "O"
     this.gameOver = false
     this.#view = document.querySelector('[data-tictactoe-container]')
+    this.#playersVictories = this.#loadLocalStorageVictories()
     this.#setupCells()
+    this.#updatePlayersVictories()
+  }
+
+  get playersVictories() {
+    return this.#playersVictories
+  }
+
+  set playersVictories(wins) {
+    const OPlayerVictoriesView = document.querySelector('[data-O-victories]')
+    const XPlayerVictoriesView = document.querySelector('[data-X-victories]')
+
+    OPlayerVictoriesView.innerText = wins["O"]
+    XPlayerVictoriesView.innerText = wins["X"]
+
+    this.#playersVictories = wins
+    this.#saveVictoriesToLocalStorage()
   }
 
   #setupCells() {
@@ -20,6 +39,30 @@ export class TicTacToeBoard {
     )
 
     resetGameButton.addEventListener('click', () => this.#reset())
+  }
+
+  #loadLocalStorageVictories() {
+    const score = JSON.parse(sessionStorage.getItem(this.#localStorageWinsKey)) 
+      ?? {
+        "O": 0,
+        "X": 0,
+      }
+
+    return score
+  }
+
+  #saveVictoriesToLocalStorage() {
+    sessionStorage.setItem(
+      this.#localStorageWinsKey, JSON.stringify(this.playersVictories)
+    )
+  }
+
+  #updatePlayersVictories() {
+    const OPlayerVictoriesView = document.querySelector('[data-O-victories]')
+    const XPlayerVictoriesView = document.querySelector('[data-X-victories]')
+
+    OPlayerVictoriesView.innerText = this.#playersVictories["O"]
+    XPlayerVictoriesView.innerText = this.#playersVictories["X"]
   }
 
   #reset() {
@@ -38,6 +81,7 @@ export class TicTacToeBoard {
     this.#checkVictory()
 
     if(this.gameOver) {
+      // this.#updatePlayersVictories()
       this.disableAllCellsClickEvents()
       alert('Jogo finalizado')
     }
@@ -85,10 +129,26 @@ export class TicTacToeBoard {
     cellMatrix.forEach(cellsArray => {
       cellsArray.forEach(cells => {
         if(!this.gameOver) {
-            this.gameOver = 
-            cells.every(cell => cell.value === "X") 
-              || cells.every(cell => cell.value === "O")
+          const circlePlayerWins = cells.every(cell => cell.value === "O")
+          const crossPlayerWins = cells.every(cell => cell.value === "X")
+
+          this.gameOver = crossPlayerWins || circlePlayerWins
+
+          if (circlePlayerWins) {
+            this.playersVictories = {
+              "O": this.playersVictories["O"] + 1,
+              "X": this.playersVictories["X"],
+            }
+            return
           }
+
+          if (crossPlayerWins) {
+            this.playersVictories = {
+              "O": this.playersVictories["O"],
+              "X": this.playersVictories["X"] + 1,
+            }
+          }
+        }
       })
     })
   }
