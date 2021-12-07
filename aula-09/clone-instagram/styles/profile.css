@@ -1,0 +1,38 @@
+[data-profile-picture-container] header, [data-profile-picture-container] picture > section {
+  padding: 0.8rem 0.5rem;
+}
+
+[data-profile-picture-container] header {
+  padding: 0.8rem 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+[data-profile-picture-container] header h2 {
+  font-size: 0.9rem;
+  margin-left: 0.8rem;
+  font-weight: 700;
+}
+
+[data-profile-picture-container] header img {
+  border-radius: 50%;
+}
+
+[data-gallery-thumbnails] {
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-flow: row wrap; */
+}
+
+[data-gallery-thumbnails] a{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 33.33%;
+  /* flex-flow: row wrap; */
+}
+
+[data-gallery-thumbnails] img {
+  aspect-ratio: 1/1;
+  max-width: 100%;
+  object-fit: cover;
+}

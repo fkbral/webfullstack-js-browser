@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/profile.css" />
+    <link rel="stylesheet" href="styles/posts.css" />
+
+    <script src="scripts/posts.js" type="module"></script>
+  </head>
+  <body>
+    <template data-profile-picture-template>
+      <div data-profile-picture-container>
+        <header>
+          <img data-profile-avatar src="" alt="" />
+          <h2>Nome da Página</h2>
+        </header>
+
+        <picture>
+          <img data-profile-photo src="" alt="" />
+
+          <section>
+            <p class="likeText"><span data-like-count>0</span> likes</p>
+            <legend></legend>
+          </section>
+        </picture>
+      </div>
+    </template>
+
+    <header class="profilePageHeader">
+      <h1>Post</h1>
+    </header>
+
+    <div data-photo-gallery></div>
+    <div data-photo-gallery></div>
+  </body>
+</html>
