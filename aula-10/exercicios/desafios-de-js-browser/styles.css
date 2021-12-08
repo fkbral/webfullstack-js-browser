@@ -1,0 +1,40 @@
+:root {
+  font-size: 62.5%;
+}
+
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+body {
+  background-color: #333;
+  color: #dedede;
+  font-size: 1.6rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+[data-challenges-container] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+[data-challenges-container] li{
+  min-width: 25%;
+  font-size: 4.2rem;
+  min-height: 320px;
+}
+
+/* [data-challenges-container] ol{
+  padding: 0 4.5rem;
+} */
+
+/* [data-challenges-container] li > h2, [data-challenges-container] li > p {*/
+[data-challenges-container] li > :is(h2, p) {
+  font-size: 1.6rem;
+}
