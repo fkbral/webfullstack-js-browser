@@ -11,25 +11,25 @@
   </head>
   <body>
     <ol data-challenges-container>
-      <li>
+      <li id="challenge-one">
         <h2>Duplique o elemento da caixa abaixo:</h2>
-        <button>Duplicar</button>
-        <p>Me Duplique</p>
+        <button data-duplicate-button>Duplicar</button>
+        <p data-text-duplicate>Me Duplique</p>
       </li>
 
-      <li>
+      <li id="challenge-two">
         <h2>Remover o elemento da caixa abaixo:</h2>
         <button>Deletar</button>
         <p>Me Delete</p>
       </li>
 
-      <li>
+      <li id="challenge-three">
         <h2>Mude a cor do texto para steelblue</h2>
         <button>Colorir</button>
         <p>Me deixe colorido</p>
       </li>
 
-      <li>
+      <li id="challenge-four">
         <h2>
           Alterne o texto do elemento entre normal e itálico (font-style:
           italic)
@@ -40,7 +40,7 @@
         <!-- <p>Me deixe normal</p> -->
       </li>
 
-      <li>
+      <li id="challenge-five">
         <h2>
           <pre>
 Estilize o texto para cumprir os seguintes requisitos:
@@ -57,11 +57,35 @@ Estilize o texto para cumprir os seguintes requisitos:
         <!-- <p>Me deixe sem estilo</p> -->
       </li>
 
-      <li></li>
+      <li id="challenge-six">
+        <h2>Impeça que o formulário recarregue a página ao ser enviado</h2>
 
-      <li></li>
+        <form data-spoof-form>
+          <label for="spoof-email">Email</label>
+          <input id="spoof-email" type="email" />
+          <button type="submit">enviar</button>
+        </form>
+      </li>
 
-      <li></li>
+      <li id="challenge-seven">
+        <h2>
+          Altere a cor de fundo do body da página para cornflowerblue se o
+          checkbox estiver marcado
+        </h2>
+
+        <label for="checkbox-color">fundo cornflowerblue</label>
+        <input id="checkbox-color" type="checkbox" />
+      </li>
+
+      <li id="challenge-eight">
+        <h2>
+          Altere a cor de fundo do body da página para a cor escolhida no color
+          picker abaixo
+        </h2>
+
+        <label for="checkbox-color">fundo cornflowerblue</label>
+        <input id="color-picker" type="color" />
+      </li>
     </ol>
   </body>
 </html>

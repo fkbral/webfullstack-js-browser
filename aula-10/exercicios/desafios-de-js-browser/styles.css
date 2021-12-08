@@ -24,9 +24,12 @@ button {
   justify-content: space-between;
 }
 
+[data-challenges-container] li::marker {
+  font-size: 4.2rem;
+}
+
 [data-challenges-container] li{
   min-width: 25%;
-  font-size: 4.2rem;
   min-height: 320px;
 }
 
