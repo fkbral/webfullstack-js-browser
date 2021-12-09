@@ -31,6 +31,7 @@ button {
 [data-challenges-container] li{
   min-width: 25%;
   min-height: 320px;
+  /* font-size: 1.8rem; */
 }
 
 /* [data-challenges-container] ol{
@@ -38,6 +39,11 @@ button {
 } */
 
 /* [data-challenges-container] li > h2, [data-challenges-container] li > p {*/
-[data-challenges-container] li > :is(h2, p) {
-  font-size: 1.6rem;
+[data-challenges-container] li > :is(h2, p, label) {
+  font-size: 1.8rem;
+}
+
+[data-challenges-container] li > :is(input) {
+  font-size: 2.8rem;
+  transform: translate(50%) scale(2);
 }

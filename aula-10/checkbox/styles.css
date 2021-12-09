@@ -1,0 +1,14 @@
+:root {
+  --body-background-color: #333;
+  --body-text-color: #dedede
+}
+
+body {
+  background-color: var(--body-background-color);
+  color: var(--body-text-color);
+}
+
+section {
+  display: flex;
+}
+
