@@ -47,3 +47,14 @@ button {
   font-size: 2.8rem;
   transform: translate(50%) scale(2);
 }
+
+.stylized-button-challenge-5 {
+  background-color : violet;
+  color : white;
+  text-decoration : underline;
+  padding : 0.4rem 1.2rem;
+}
+
+[data-challenges-container] li > :is(p.stylized-button-challenge-5) {
+  font-size : 2.2rem;
+}
